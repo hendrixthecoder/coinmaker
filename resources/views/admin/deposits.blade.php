@@ -11,6 +11,10 @@
             <p class="italic">- Have a great day!</p>
         </div>
     @else
+        <div class="m-6">
+            <h1 class="font-bold text-4xl">Pending Deposits</h1>
+        </div>
+        <div class="border border-neutral-600"></div>
         <div class="rounded-md p-5 bg-light-blue flex flex-col gap-4">
             <div class="overflow-auto">
                 <table class="text-center w-full">

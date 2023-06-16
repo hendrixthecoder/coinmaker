@@ -8,8 +8,8 @@
             </div>
             <div class="text-gray-500 my-3">Join millions who've already discovered smarter investing in multiple types of assets. Choose an investment product to start with.</div>
             <div class="flex gap-7 items-center my-9">
-                <a href="" class="px-9 py-4 bg-blue-500 text-white rounded-md">Get Started</a>
-                <a href="" class="flex gap-1 text-blue-500">
+                <a href="{{ route('register') }}" class="px-9 py-4 bg-blue-500 text-white rounded-md">Get Started</a>
+                <a href="{{ route('login') }}" class="flex gap-1 text-blue-500">
                     Sign In
                     <span class="material-icons">login</span>
                 </a>

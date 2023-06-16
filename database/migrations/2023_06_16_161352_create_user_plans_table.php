@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('investment_plans', function (Blueprint $table) {
+        Schema::create('user_plans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('user_id');
+            $table->string('plan_id');
+            $table->string('amount');
+            $table->string('pay_day');
             $table->string('plan_name');
-            $table->integer('plan_user_id')->nullable();
-            $table->integer('min_deposit');
-            $table->integer('max_deposit');
-            $table->integer('duration');
-            $table->integer('weekly_earnings');
+            $table->string('plan_profit');
+            $table->string('days_left')->default("Oh i''m smart ;-)");
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('investment_plans');
+        Schema::dropIfExists('user_plans');
     }
 };

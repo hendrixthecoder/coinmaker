@@ -65,6 +65,14 @@ class User extends Authenticatable
         return $this->belongsToMany(InvestmentPlan::class)->withPivot('amount','pay_day');
     }
 
+    public function userPlans () {
+        return $this->hasMany(UserPlan::class);
+    }
+
+    /**
+     * Everything investment starts here
+     * 
+     */
     public function getAmountInvested () {
         return $this->investmentPlans->map(function($item){
             return $item->pivot->amount;
@@ -78,67 +86,106 @@ class User extends Authenticatable
     }
 
     public function returnAmountInvested () {
-        return $this->transactions->where('source', 'Capital')->where('end_day', '<', now())->sum('amount');
+        return $this->transactions()->where('source', 'Capital')->where('end_day', '<', now())->sum('amount');
     }
+    
+    public function totalAmountInvested () {
+        return $this->transactions()->where('source', 'Capital')->sum('amount');
+    }
+    
+    /**
+     * Everything investment ends here
+     * 
+     */
+
 
     public function getDueProfit () {
-        return $this->transactions->where('whereToCredit', 'Profit')->where('pay_day', '<=', now())->sum('amount');
+        return $this->transactions()->where('whereToCredit', 'Profit')->where('pay_day', '<=', now())->sum('amount');
+    }
+
+    
+    /**
+     * Debits, withdrawals, start here
+     * 
+    */
+    public function getProcessedWithdrawals () {
+        return $this->withdrawals()->where('status', 'Processed')->sum('amount');
     }
 
     public function getReversedProfit () {
-        return $this->transactions->where('whereToDebit', 'Profit')->sum('amount');
+        return $this->transactions()->where('whereToDebit', 'Profit')->sum('amount');
     }
 
     public function getReversedBonus () {
-        return $this->transactions->where('whereToDebit', 'Bonus')->sum('amount');
+        return $this->transactions()->where('whereToDebit', 'Bonus')->sum('amount');
     }
 
     public function getReversed () {
-        return $this->transactions->where('whereToDebit', 'Balance')->sum('amount');
+        return $this->transactions()->where('whereToDebit', 'Balance')->sum('amount');
     }
-
-    public function getProcessedBalanceCredits () {
-        return $this->transactions->where('type', 'Credit')->where('whereToCredit', 'Balance')->where('source', '!=', 'Capital')->sum('amount');
-    }
-
-    public function getBonusCredits () {
-        return $this->transactions->where('type', 'Credit')->where('whereToCredit', 'Bonus')->sum('amount');
-    }
-
+    
     public function getProcessedDebits () {
         return $this->getReversedProfit() + $this->getReversedBonus() + $this->getReversed();
     }
+    
+    /**
+     * Debits, withdrawals, ends here
+     * 
+    **/
 
-    public function totalAmountInvested () {
-        return $this->transactions->where('source', 'Capital')->sum('amount');
+    
+
+    /**
+     * Credits, Deposits start here
+     * 
+    **/
+
+    public function getProcessedBalanceCredits () {
+        return $this->transactions()->where('type', 'Credit')->where('whereToCredit', 'Balance')->where('source', '!=', 'Capital')->sum('amount');
     }
 
-    public function getWalletBalance () {
-        return $this->deposits->where('status', 'Processed')->sum('amount') - $this->totalAmountInvested();
+    public function getBonusCredits () {
+        return $this->transactions()->where('type', 'Credit')->where('whereToCredit', 'Bonus')->sum('amount');
     }
+     
+    /**
+     * Credits, Deposits end here
+     * 
+    **/
 
-    public function getBonusBalance () {
-        return $this->getBonusCredits() - ($this->withdrawals->where('source', 'Bonus')->sum('amount') + $this->getReversedBonus());
-    }
+     /**
+      * Everything balance starts here
+      */
+      public function getWalletBalance () {
+          return $this->deposits()->where('status', 'Processed')->sum('amount') - $this->totalAmountInvested();
+      }
+  
+      public function getBonusBalance () {
+          return $this->getBonusCredits() - ($this->withdrawals()->where('source', 'Bonus')->sum('amount') + $this->getReversedBonus());
+      }
+      
+     /**
+      * Everything balance ends here
+      *
+      */
 
-    public function getProcessedWithdrawals () {
-        return $this->withdrawals->where('status', 'Processed')->sum('amount');
-    }
+
+
 
     public function getDeductableProfit () {
-        return $this->getDueProfit() - ($this->getReversedProfit() + $this->withdrawals->where('status', 'Processed')->where('source','!=','Bonus')->sum('amount'));
+        return $this->getDueProfit() - ($this->getReversedProfit() + $this->withdrawals()->where('status', 'Processed')->where('source','!=','Bonus')->sum('amount'));
     }
 
     public function getBalance () {
-        $processedDeposits = $this->deposits->where('status', 'Processed')->sum('amount');
+        $processedDeposits = $this->deposits()->where('status', 'Processed')->sum('amount');
 
-        if($this->investmentPlans->isEmpty()){
+        if(is_null($this->investmentPlans()->get())){
             $balance = ($processedDeposits + $this->getProcessedBalanceCredits() + $this->getDueProfit() + $this->getBonusCredits()) - ($this->getProcessedDebits() + $this->getProcessedWithdrawals());
             
         }else{
             $balance = ($processedDeposits + $this->getProcessedBalanceCredits() + $this->getDueProfit() + $this->getBonusCredits() + $this->returnAmountInvested()) - ($this->getProcessedDebits() + $this->getProcessedWithdrawals() + $this->getAmountInvested());
         }
 
-        return $balance;
+        return number_format(($balance), 2);
     }
 }

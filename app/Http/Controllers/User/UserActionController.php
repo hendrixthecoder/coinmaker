@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class UserActionController extends Controller
@@ -61,5 +62,44 @@ class UserActionController extends Controller
         Session::put('amount', $request->amount);
         
         return redirect()->route('makePayment');
+    }
+
+    public function updateAccount (Request $request) {
+        $validated = $request->validate([
+            'first_name' => 'bail|required|alpha|min:3',
+            'last_name' => 'bail|required|alpha|min:3',
+            'number' => 'bail|required|',
+            'country' => 'required',
+            'email' => 'bail|required|email',
+        ]);
+
+        $request->user()->update($validated);
+
+        return back()->with('success', 'Account updated successfully!');
+        
+    }
+
+    public function changePassword (Request $request) {
+        
+        $request->validate([
+            'curr_password' => 'bail|required',
+            'password' => 'bail|required|min:6|confirmed',
+            'password_confirmation' => 'bail|required',
+        ]);
+
+        $user = $request->user();
+
+        if(Hash::check($request->curr_password, $user->password)){
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return back()->with('success', 'Password changed successfully!');
+        }
+
+        return back()->with('error', 'Invalid Password!');
+    }
+
+    public function editWithdrawalInfo (Request $request) {
+        dd($request->all()); 
     }
 }

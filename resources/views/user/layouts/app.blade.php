@@ -16,16 +16,16 @@
         dialog::backdrop {
             background-color: rgba(0, 0, 0, 0.5)
         }
-
     </style>
 </head>
-<body class="font-ubuntu transition-all text-white bg-deep-blue">
-
+<body class="font-ubuntu transition-all text-white bg-deep-blue relative">
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    
     @include('user.includes.sidebar')
 
-    <div class="w-full p-4">
+    <div class="w-full p-4 sticky top-0 backdrop-blur-sm  ">
         <div class="flex gap-2">
-            <div class=" rounded-md bg-light-blue shadow-2xl p-4">{{ env('APP_NAME') }}</div>
+            <div class=" rounded-md font-medium bg-light-blue shadow-2xl p-4"><a href="{{ route('userDashboard') }}">{{ env('APP_NAME') }}</a></div>
             <div class="grow p-4 rounded-md bg-light-blue shadow flex select-none">
                 <span class="material-icons cursor-pointer hover:text-gray-500" id="" data-toggle="nav">keyboard_tab_rtl</span>
             </div>
@@ -37,17 +37,16 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
             $('[data-toggle="nav"]').click(function () {
                 // $('#navMenu').toggleClass('hidden')
-                $('#navMenu').toggleClass('left-[-300px]')
+                $('#navMenu').toggleClass('translate-x-[300px]')
             })
 
             $('[data-toggle="submenu"]').click(function() {
                 $('#sub').toggleClass('rotate-90')
-                $('#submenu').toggleClass('hidden')
+                $('#submenu').toggleClass('opacity-0')
             })
                      
         })

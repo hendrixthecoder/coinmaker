@@ -39,16 +39,19 @@
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
+
         $(document).ready(function(){
             $('[data-toggle="nav"]').click(function () {
                 // $('#navMenu').toggleClass('hidden')
-                $('#navMenu').toggleClass('left-[-300px]')
+                $('#navMenu').toggleClass('translate-x-[300px]')
             })
 
             $('[data-toggle="submenu"]').click(function() {
                 $('#sub').toggleClass('rotate-90')
-                $('#submenu').toggleClass('hidden')
+                $('#submenu').toggleClass('opacity-0')
             })
+
+
                      
         })
     </script>

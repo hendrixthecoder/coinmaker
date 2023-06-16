@@ -23,8 +23,8 @@
                     <span class="material-icons text-white">monetization_on</span>
                 </div>
                 <div class="flex flex-col">
-                    <p>Total Profits</p>
-                    <p>$0</p>
+                    <p>Total Profit</p>
+                    <p>${{ $profit }} USD</p>
                 </div>
             </div>
         </div>
@@ -34,8 +34,8 @@
                     <span class="material-icons text-white">sell</span>
                 </div>
                 <div class="flex flex-col">
-                    <p>Total Packages</p>
-                    <p>$0</p>
+                    <p>Total Active Packages</p>
+                    <p>{{ $packages }}</p>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="flex flex-col">
                     <p>Total Withdrawal</p>
-                    <p>$0</p>
+                    <p>${{ $withdrawals }} USD</p>
                 </div>
             </div>
         </div>

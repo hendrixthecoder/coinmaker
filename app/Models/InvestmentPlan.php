@@ -13,7 +13,7 @@ class InvestmentPlan extends Model
         'plan_name',
         'min_deposit',
         'max_deposit',
-        'daily_earnings',
+        'weekly_earnings',
         'duration',
         'plan_user_id',
         'top_up_value',
