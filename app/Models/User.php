@@ -22,6 +22,7 @@ class User extends Authenticatable
         'last_name',
         'country',
         'email',
+        'number',
         'password',
         'btc_address', 
         'eth_address', 

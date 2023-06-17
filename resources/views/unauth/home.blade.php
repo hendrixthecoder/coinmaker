@@ -90,10 +90,110 @@
             </div>
         </div>
     </div>
-    <div class="mt-32">
-        <h3 class="text-center text-3xl font-medium">Find the right plan for you</h3>
-        <p class="text-gray-500 text-center">Investment & Savings solution that is affordable</p>
-        
+    <div class="mt-32 flex flex-col gap-5">
+        <div class="flex flex-col gap-2">
+            <h3 class="text-center text-3xl font-medium">Find the right plan for you</h3>
+            <p class="text-gray-500 text-center">Investment & Savings solution that is affordable</p>
+        </div>
+        <div class="flex justify-between overflow-auto bg-gray-100 rounded-3xl px-3 py-1 ">
+            <div class="rounded-lg p-3 cursor-pointer hover:text-blue-500" data-toggle="pointer" data-toggle-pointer="bronze">Bronze</div>
+            <div class="rounded-lg p-3 px-4 cursor-pointer hover:text-blue-500" data-toggle="pointer" data-toggle-pointer="silver">Silver</div>
+            <div class="rounded-lg p-3 px-5 cursor-pointer hover:text-blue-500" data-toggle="pointer" data-toggle-pointer="gold">Gold</div>
+        </div>
+        <div class="mt-10">
+            <section aria-describedby="bronze" data-type="pointer" class="w-full p-4 px-10 shadow-lg rounded-md">
+                <div class="flex flex-col gap-5">
+                    <h3 class="text-lg font-medium">Bronze Plan</h3>
+
+                    <div class="flex flex-col gap-4">
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-blue-500">sentiment_satisfied_alt</span>
+                            <h3>Most popular</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-yellow-500">card_membership</span>
+                            <h3>$500 Minimum Deposit</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">card_membership</span>
+                            <h3>$4999 Maximum Deposit</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">currency_exchange</span>
+                            <h3>Runs for 12 Weeks</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">add_card</span>
+                            <h3>8% ROI Weekly for 12 weeks</h3>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('plans') }}" class="mt-7 bg-blue-500 text-center p-4 text-white rounded-md">Get Started</a>
+                </div>
+            </section>
+    
+            <section aria-describedby="silver" hidden data-type="pointer"  class="w-full p-4 px-10 shadow-lg rounded-md">
+                <div class="flex flex-col gap-5">
+                    <h3 class="text-lg font-medium">Silver Plan</h3>
+
+                    <div class="flex flex-col gap-4">
+                        {{-- <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-blue-500">sentiment_satisfied_alt</span>
+                            <h3>Most popular</h3>
+                        </div> --}}
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-yellow-500">card_membership</span>
+                            <h3>$5,000 Minimum Deposit</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">card_membership</span>
+                            <h3>$49,999 Maximum Deposit</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">currency_exchange</span>
+                            <h3>Runs for 12 Weeks</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">add_card</span>
+                            <h3>8% ROI Weekly for 12 weeks</h3>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('plans') }}" class="mt-7 bg-blue-500 text-center p-4 text-white rounded-md">Get Started</a>
+                </div>
+            </section>
+    
+            <section aria-describedby="gold" hidden data-type="pointer" class="w-full p-4 px-10 shadow-lg rounded-md">
+                <div class="flex flex-col gap-5">
+                    <h3 class="text-lg font-medium">Bronze Plan</h3>
+
+                    <div class="flex flex-col gap-4">
+                        {{-- <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-blue-500">sentiment_satisfied_alt</span>
+                            <h3>Most popular</h3>
+                        </div> --}}
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-yellow-500">card_membership</span>
+                            <h3>$50,000 Minimum Deposit</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">card_membership</span>
+                            <h3>$500,000 Maximum Deposit</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">currency_exchange</span>
+                            <h3>Runs for 12 Weeks</h3>
+                        </div>
+                        <div class="flex gap-2 text-sm text-gray-500 items-center">
+                            <span class="material-icons text-green-600">add_card</span>
+                            <h3>8% ROI Weekly for 12 weeks</h3>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('plans') }}" class="mt-7 bg-blue-500 text-center p-4 text-white rounded-md">Get Started</a>
+                </div>
+            </section>
+        </div>
     </div>
     <div class="my-32">
         <p class="text-center text-sm text-gray-500 font-black mt-16">REVIEWS</p>
@@ -102,4 +202,18 @@
     {{-- Testimonial slider starts here --}}
 
     {{-- Testimonial slider ends here --}}
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle-pointer="bronze"]').addClass('bg-white rounded-3xl shadow-lg')
+
+            $('[data-toggle="pointer"]').click(function() {
+                $('[data-toggle="pointer"]').removeClass('bg-white rounded-3xl shadow-lg')
+                $(this).addClass('bg-white rounded-3xl shadow-lg')
+
+                let target = $(this).attr('data-toggle-pointer')
+                $('[data-type="pointer"]').hide()
+                $(`[aria-describedby="${target}"]`).show()
+            })
+        })
+    </script>
 @endsection
