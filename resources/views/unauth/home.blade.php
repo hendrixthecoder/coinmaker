@@ -93,6 +93,7 @@
     <div class="mt-32">
         <h3 class="text-center text-3xl font-medium">Find the right plan for you</h3>
         <p class="text-gray-500 text-center">Investment & Savings solution that is affordable</p>
+        
     </div>
     <div class="my-32">
         <p class="text-center text-sm text-gray-500 font-black mt-16">REVIEWS</p>

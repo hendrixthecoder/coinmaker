@@ -1,5 +1,5 @@
-<div class="select-none">
-    <nav class="flex justify-between w-full my-4 ">
+<div class="select-none p-4 py-2 lg:py-10 lg:px-32 z-50 bg-white sticky top-0" data-nav="true">
+    <nav class="flex justify-between w-full my-4">
         <p>Logo here</p>
         <div class="flex justify-between gap-5 max-sm:hidden">
             <a href="{{ route('home') }}" class="@if (Route::is('home')) text-blue-500 @endif hover:text-gray-500">Home</a>

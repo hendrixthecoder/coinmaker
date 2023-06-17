@@ -21,6 +21,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('btc_address')->nullable();
+            $table->string('eth_address')->nullable();
+            $table->string('bnb_address')->nullable();
+            $table->string('trx_address')->nullable();
+            $table->string('usdt_address')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

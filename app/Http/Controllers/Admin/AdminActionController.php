@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\InvestmentPlan;
 use App\Models\Transaction;
+use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Storage;
 
 class AdminActionController extends Controller
@@ -104,6 +105,23 @@ class AdminActionController extends Controller
         InvestmentPlan::create($validated);
 
         return back()->with('success', 'Investment Plan created successfully');
+    }
+
+    public function approveWithdrawal (Request $request) {
+        $withdrawal = Withdrawal::findOrFail($request->id);
+        $withdrawal->status = 'Processed';
+        $withdrawal->save();
+
+        return back()->with('success', 'Withdrawal approved successfully!');
+    }
+    
+    public function declineWithdrawal (Request $request) {
+        $withdrawal = Withdrawal::findOrFail($request->id);
+        $withdrawal->status = 'Declined';
+        $withdrawal->save();
+        
+        return back()->with('success', 'Withdrawal declined successfully!');
+
     }
     
 }

@@ -18,9 +18,9 @@
             <span class="material-icons">add_card</span>
             <a href="{{ route('manageDeposits') }}">Manage Deposits</a>
         </div>
-        <div class="flex gap-3 hover:text-gray-300 hover:translate-x-4 duration-500">
+        <div class="flex gap-3 hover:text-gray-300 hover:translate-x-4 duration-500 @if (Route::is('manageWithdrawals')) text-blue-500 @endif">
             <span class="material-icons">shopping_cart_checkout</span>
-            <a href="">Manage Withdrawals</a>
+            <a href="{{ route('manageWithdrawals') }}">Manage Withdrawals</a>
         </div>
         <div class="flex gap-3 hover:text-gray-300 hover:translate-x-4 duration-500 @if (Route::is('admin.plans')) text-blue-500 @endif">
             <span class="material-icons">savings</span>

@@ -8,6 +8,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\InvestmentPlan;
 use App\Http\Controllers\Controller;
+use App\Models\Withdrawal;
 
 class FundsController extends Controller
 {
@@ -73,6 +74,76 @@ class FundsController extends Controller
     }
 
     public function newWithdrawal (Request $request) {
-        dd('Creating new withdrawal of $'.$request->amount);
+        $request->validate([
+            'amount' => 'bail|required|numeric|min:50',
+            'method' => 'bail|required|'
+        ]);
+        $user = $request->user();
+        
+        $balance = (float)str_replace(',', '', $user->getBalance());
+
+        if($balance <= $request->amount) return back()->with('error', 'Insufficient funds!');
+
+        $withdrawal = new Withdrawal();
+
+        if($request->method == 'BTC') {
+            if(is_null($user->btc_address)) return redirect()->route('edit-withdrawal')->with('error', 'Set your BTC wallet address first!');
+            
+            $withdrawal->receive_details = $user->btc_address;
+        }
+        
+        if($request->method == 'ETH') {
+            if(is_null($user->eth_address)) return redirect()->route('edit-withdrawal')->with('error', 'Set your ETH wallet address first!');
+            
+            $withdrawal->receive_details = $user->eth_address;
+        }
+
+        if($request->method == 'BNB') {
+            if(is_null($user->bnb_address)) return redirect()->route('edit-withdrawal')->with('error', 'Set your BNB wallet address first!');
+            
+            $withdrawal->receive_details = $user->bnb_address;
+        }
+        
+        if($request->method == 'TRX') {
+            if(is_null($user->trx_address)) return redirect()->route('edit-withdrawal')->with('error', 'Set your TRX wallet address first!');
+            
+            $withdrawal->receive_details = $user->trx_address;
+        }
+
+        if($request->method == 'USDT') {
+            if(is_null($user->usdt_address)) return redirect()->route('edit-withdrawal')->with('error', 'Set your USDT wallet address first!');
+            
+            $withdrawal->receive_details = $user->usdt_address;
+            
+        }
+
+        $withdrawal->user_id = $user->id;
+        $withdrawal->name = $user->first_name.' '.$user->last_name;
+        $withdrawal->amount = $request->amount;
+        $withdrawal->source = $request->method;
+        $withdrawal->type = 'Debit';
+        $withdrawal->email = $user->email;
+        $withdrawal->status = 'Pending';
+
+        function generateTransactionId() {
+            $id = substr(md5(rand()), 0, 25);
+
+            if(checkId($id)){
+                return generateTransactionId();
+            }
+
+            return $id;
+        }
+
+        function checkId($id) {
+            return Withdrawal::where('transaction_id', $id)->first();
+        }
+
+        $withdrawal->transaction_id = generateTransactionId();
+        $withdrawal->receive_method = $request->method;
+        $withdrawal->save();
+
+        return back()->with('success', 'Withdrawal placed successfully, wait for system to approve the transaction!');
+        
     }
 }

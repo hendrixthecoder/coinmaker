@@ -12,7 +12,7 @@
                     <span class="material-icons text-white">account_balance</span>
                 </div>
                 <div class="flex flex-col">
-                    <p>Balance</p>
+                    <p class="font-medium text-lg">Balance</p>
                     <p>${{ $balance }} USD</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                     <span class="material-icons text-white">monetization_on</span>
                 </div>
                 <div class="flex flex-col">
-                    <p>Total Profit</p>
+                    <p class="font-medium text-lg">Total Profit</p>
                     <p>${{ $profit }} USD</p>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     <span class="material-icons text-white">sell</span>
                 </div>
                 <div class="flex flex-col">
-                    <p>Total Active Packages</p>
+                    <p class="font-medium text-lg">Total Active Packages</p>
                     <p>{{ $packages }}</p>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                     <span class="material-icons text-white">account_balance</span>
                 </div>
                 <div class="flex flex-col">
-                    <p>Total Withdrawal</p>
+                    <p class="font-medium text-lg">Total Approved Withdrawals</p>
                     <p>${{ $withdrawals }} USD</p>
                 </div>
             </div>

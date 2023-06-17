@@ -23,6 +23,11 @@ class User extends Authenticatable
         'country',
         'email',
         'password',
+        'btc_address', 
+        'eth_address', 
+        'bnb_address', 
+        'trx_address', 
+        'usdt_address'
     ];
 
     /**

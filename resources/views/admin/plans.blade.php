@@ -6,10 +6,10 @@
             <p class="rounded-md my-4 bg-green-500 p-3 text-white">{{ Session::get('success') }}</p>
         @endif
 
-        <button class="p-2 flex gap-2 w-40 bg-blue-500 rounded-md" data-toggle="modal" onclick="openCreateModal()">
+        {{-- <button class="p-2 flex gap-2 w-40 bg-blue-500 rounded-md" data-toggle="modal" onclick="openCreateModal()">
             <span class="material-icons">add</span>
             Add New Plan
-        </button>
+        </button> --}}
 
         <dialog class="rounded-md w-9/12 max-w-lg text-white bg-deep-blue p-4 transition-all duration-500"  id="create">
             <div class="w-full flex justify-between">

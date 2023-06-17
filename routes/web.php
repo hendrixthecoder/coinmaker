@@ -65,8 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin'], function () {
         
         Route::get('/dashboard', [ AdminPageController::class, 'dashboard' ])->name('admin.dashboard');
-        Route::get('/deposits', [ AdminPageController::class, 'deposits'])->name('manageDeposits');
-
+        
+        Route::get('/manage-deposits', [ AdminPageController::class, 'deposits'])->name('manageDeposits');
         Route::post('approve-deposit', [ AdminActionController::class, 'approveDeposit' ])->name('approveDeposit');
         Route::post('decline-deposit', [ AdminActionController::class, 'declineDeposit' ])->name('declineDeposit');
 
@@ -76,6 +76,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/investment-plans', [ AdminPageController::class, 'plans' ])->name('admin.plans');
         Route::post('/investment-plans', [ AdminActionController::class, 'createPlan' ])->name('admin.create.plans');
+
+        Route::get('/manage-withdrawals', [ AdminPageController::class, 'manageWithdrawals' ])->name('manageWithdrawals');
+        Route::post('/approve-withdrawals', [ AdminActionController::class, 'approveWithdrawal' ])->name('approveWithdrawal');
+        Route::post('/decline-withdrawals', [ AdminActionController::class, 'declineWithdrawal' ])->name('declineWithdrawal');
     });
     
 });

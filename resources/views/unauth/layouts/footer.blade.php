@@ -24,14 +24,14 @@
             <div class="grid grid-cols-2 lg:grid lg:grid-cols-4 gap-y-6">
                 <div class="flex flex-col gap-4">
                     <h3 class="text-lg text-black font-medium">Quick Links</h3>
-                    <a class=" hover:text-blue-500" href="">Standard Plans</a>
+                    <a class=" hover:text-blue-500" href="{{ route('plans') }}">Standard Plans</a>
                     <a class=" hover:text-blue-500" href="">Affiliate System</a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <h3 class="text-lg text-black font-medium">Company</h3>
-                    <a href="" class="hover:text-blue-500">About Us</a>
-                    <a class=" hover:text-blue-500" href="">Reach Us</a>
-                    <a class=" hover:text-blue-500" href="">Log In</a>
+                    <a href="{{ route('about') }}" class="hover:text-blue-500">About Us</a>
+                    <a class=" hover:text-blue-500" href="{{ route('contact') }}">Reach Us</a>
+                    <a class=" hover:text-blue-500" href="{{ route('login') }}">Log In</a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <h3 class="text-lg text-black font-medium">More</h3>
@@ -41,8 +41,8 @@
                 </div>
                 <div class="flex flex-col gap-4">
                     <h3 class="text-lg text-black font-medium">Resources</h3>
-                    <a class=" hover:text-blue-500" href="">Raise a Dispute</a>
-                    <a class=" hover:text-blue-500" href="">Your account</a>
+                    <a class=" hover:text-blue-500" href="{{ route('contact') }}">Raise a Dispute</a>
+                    <a class=" hover:text-blue-500" href="{{ route('userDashboard') }}">Your account</a>
                 </div>
             </div>
         </div>

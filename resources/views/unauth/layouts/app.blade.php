@@ -13,16 +13,32 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body class="font-ubuntu transition-all duration-500">
-    <div class="p-4 w-full lg:py-10 lg:px-32 ">
-        @include('unauth.layouts.header')
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    @include('unauth.layouts.header')
+    <div class="p-4 w-full lg:py-10 lg:px-32 relative">
         @yield('content')
 
     </div>
     @include('unauth.layouts.footer')
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
             $('#nav-toggle-btn').click(() => $('#mobile-nav').toggleClass('hidden'))
+            
+            const handleScroll = () => {
+                
+                let navTop = $('[data-nav="true"]').offset().top;
+
+                if(navTop > 1) {
+                    $('[data-nav="true"]').addClass('shadow-lg')
+                }
+
+                if(navTop < 1) {
+                    $('[data-nav="true"]').removeClass('shadow-lg')
+    
+                }
+            }
+
+            $(window).scroll(handleScroll)
         });
     </script>
 </body>

@@ -20,6 +20,7 @@
     </style>
 </head>
 <body class="font-ubuntu transition-all text-white bg-deep-blue">
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
     @include('admin.includes.sidebar')
 
@@ -37,7 +38,6 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
 
         $(document).ready(function(){
@@ -49,10 +49,7 @@
             $('[data-toggle="submenu"]').click(function() {
                 $('#sub').toggleClass('rotate-90')
                 $('#submenu').toggleClass('opacity-0')
-            })
-
-
-                     
+            })     
         })
     </script>
 </body>

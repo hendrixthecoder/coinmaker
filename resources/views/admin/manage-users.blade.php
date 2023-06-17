@@ -31,7 +31,7 @@
                                 <td class="border p-2 border-neutral-600">{{ $user->country }}</td>
                                 <td class="border p-2 border-neutral-600">{{ $user->number }}</td>
                                 <td class="border p-2 border-neutral-600">
-                                    <button class="rounded-md bg-blue-500 p-3 flex gap-1" onclick="openModal()" data-toggle-modal="{{ $user->id }}">
+                                    <button class="rounded-md bg-blue-500 p-3 flex gap-1" onclick="openModal(event)" data-toggle-modal="{{ $user->id }}">
                                         <span class="material-icons">visibility</span>
                                         View
                                     </button>
@@ -40,12 +40,12 @@
                             <dialog class="bg-deep-blue rounded-md p-4 w-9/12 text-white" id="view{{ $user->id }}">
                                 <div class="w-full flex justify-between">
                                     <p>Actions</p>
-                                    <span class="material-icons cursor-pointer select-none" onclick="closeModal()">close</span>
+                                    <span class="material-icons cursor-pointer select-none" onclick="closeModal(event)">close</span>
                                 </div>
                                 <div class="flex justify-between gap-4 my-4">
                                     @include('admin.includes.credit-debit-user')
-                                    <button class="bg-green-500 rounded-md p-2 text-white" onclick="openCreditModal()" data-toggle-modal="credit{{ $user->id }}">Credit</button>
-                                    <button class="bg-red-500 rounded-md p-2 text-white" onclick="openDebitModal()" data-toggle-modal="debit{{ $user->id }}">Debit</button>
+                                    <button class="bg-green-500 rounded-md p-2 text-white" onclick="openCreditModal(event)" data-toggle-modal="credit{{ $user->id }}">Credit</button>
+                                    <button class="bg-red-500 rounded-md p-2 text-white" onclick="openDebitModal(event)" data-toggle-modal="debit{{ $user->id }}">Debit</button>
                                 </div>
                             </dialog>
                         @endforeach
@@ -57,25 +57,25 @@
     @endif
 </div>
 <script>
-    const openModal = () => {
+    const openModal = (event) => {
         let id = event.target.getAttribute('data-toggle-modal')
         let modal = document.querySelector(`#view${id}`)
         return modal.showModal()
     }
 
-    const openCreditModal = () => {
+    const openCreditModal = (event) => {
         let id = event.target.getAttribute('data-toggle-modal')
         let modal = document.querySelector(`#${id}`)
         modal.showModal()
     }
 
-    const openDebitModal = () => {
+    const openDebitModal = (event) => {
         let id = event.target.getAttribute('data-toggle-modal')
         let modal = document.querySelector(`#${id}`)
         modal.showModal()
     }
 
-    const closeModal = () => {
+    const closeModal = (event) => {
         return event.target.parentNode.parentNode.close()
     }
 

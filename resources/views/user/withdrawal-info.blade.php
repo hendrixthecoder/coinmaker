@@ -2,11 +2,11 @@
 @section('content')
 <div class="flex flex-col w-full gap-6 mb-10">
     <div class="m-6 mb-2">
-        <h1 class="font-bold text-3xl">Update Account</h1>
+        <h1 class="font-bold text-3xl">Update Withdrawal Info</h1>
     </div>
     <div class="border-b select-none  border-neutral-600 flex space-x-14 pl-10 transition-all duration-500">
-        <h2 class="hover:border-b pb-3 text-lg cursor-pointer" data-toggle="pointer" data-toggle-target="account">Account</h2>
-        <h2 class="hover:border-b pb-3 text-lg cursor-pointer" data-toggle="pointer" data-toggle-target="security">Security</h2>
+        <h2 class="hover:border-b pb-3 text-lg cursor-pointer" data-toggle="pointer" data-toggle-target="account">Crypto</h2>
+        {{-- <h2 class="hover:border-b pb-3 text-lg cursor-pointer" data-toggle="pointer" data-toggle-target="security">Security</h2> --}}
     </div>
 
     <section aria-describedby="account" data="pointer" class="">
@@ -28,29 +28,36 @@
                 @csrf
                 <div class="md:grid md:grid-cols-2 flex flex-col gap-4">
                     <div class="flex flex-col gap-3">
-                        <label for="first_name">First Name:</label>
-                        <input type="text" required name="first_name" value="{{ Auth::user()->first_name }}" id="first_name" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
+                        <label for="btc">BTC Address:</label>
+                        <input type="text" name="btc_address" value="{{ Auth::user()->btc_address }}" id="btc" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
                     </div>
                     <div class="flex flex-col gap-3">
-                        <label for="last_name">Last Name:</label>
-                        <input type="text" required name="last_name" value="{{ Auth::user()->last_name }}" id="last_name" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
+                        <label for="eth">ETH Address:</label>
+                        <input type="text" name="eth_address" value="{{ Auth::user()->eth_address }}" id="eth" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
                     </div>
                 </div>
                 <div class="md:grid md:grid-cols-2 flex flex-col gap-4">
                     <div class="flex flex-col gap-3">
-                        <label for="email">Email Address:</label>
-                        <input type="text" required name="email" value="{{ Auth::user()->email }}" id="email" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
+                        <label for="bnb">BNB Address:</label>
+                        <input type="text" name="bnb_address" value="{{ Auth::user()->bnb_address }}" id="bnb" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
                     </div>
                     <div class="flex flex-col gap-3">
-                        <label for="number">Phone Number:</label>
-                        <input type="text" required name="number" value="{{ Auth::user()->number }}" id="number" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
+                        <label for="trx">TRX Address:</label>
+                        <input type="text" name="trx_address" value="{{ Auth::user()->trx_address }}" id="trx" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
                     </div>
                 </div>
+                <div class="md:grid md:grid-cols-2 flex flex-col gap-4">
+                    <div class="flex flex-col gap-3">
+                        <label for="usdt">USDT Address:</label>
+                        <input type="text" name="usdt_address" value="{{ Auth::user()->usdt_address }}" id="usdt" class="rounded-md bg-deep-blue shadow-lg outline-none p-3">
+                    </div>
+                </div>
+
                 <input type="submit" value="Submit" class="bg-blue-500 cursor-pointer w-20 rounded-md p-3">
             </form>
         </div>
     </section>
-    <section aria-describedby="security" data="pointer" class="hidden" >
+    {{-- <section aria-describedby="security" data="pointer" class="hidden" >
         <div class="w-full rounded-md p-3 bg-light-blue flex flex-col gap-4">
             <div class="bg-deep-blue rounded-xl w-full p-6 flex flex-col gap-4">
                 <h3 class="text-xl font-medium">Worried your password has been compromised?</h3>
@@ -73,7 +80,7 @@
                 <input type="submit" value="Submit" class="bg-blue-500 cursor-pointer w-20 rounded-md p-3">
             </form>
         </div>
-    </section> 
+    </section>  --}}
 </div>
 
 <script>

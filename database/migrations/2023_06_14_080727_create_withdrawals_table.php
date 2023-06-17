@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('receive_method');
             $table->string('receive_details');
-            // $table->string('transaction_id');
+            $table->string('transaction_id');
             
             
             $table->timestamps();

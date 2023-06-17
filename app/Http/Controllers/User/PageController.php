@@ -123,7 +123,7 @@ class PageController extends Controller
     }
 
     public function withdrawals (Request $request) {
-        $withdrawals = $request->user()->withdrawals()->paginate(6);
+        $withdrawals = $request->user()->withdrawals()->orderBy('id', 'desc')->paginate(6);
         $balance = $request->user()->getBalance();
         return view('user.withdrawals', compact(['withdrawals', 'balance']));
     }

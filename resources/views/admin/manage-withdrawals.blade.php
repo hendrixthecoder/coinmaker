@@ -4,15 +4,15 @@
     @if (Session::has('success'))
         <p class="rounded-md my-4 bg-green-500 p-3 text-white">{{ Session::get('success') }}</p>
     @endif
-    @if ($deposits->isEmpty())            
+    @if ($withdrawals->isEmpty())            
         <div class="rounded-md bg-light-blue shadow-lg p-4 flex flex-col gap-4">
             <h3 class="font-bold text-lg">Whoops!</h3>
-            <p>There are no pending deposits in the system, come back later when a new deposit has been made.</p>
+            <p>There are no pending withdrawals in the system, come back later when a new deposit has been made.</p>
             <p class="italic">- Have a great day!</p>
         </div>
     @else
         <div class="m-6">
-            <h1 class="font-bold text-4xl">Pending Deposits</h1>
+            <h1 class="font-bold text-4xl">Pending Withdrawals</h1>
         </div>
         <div class="border border-neutral-600"></div>
         <div class="rounded-md p-5 bg-light-blue flex flex-col gap-4">
@@ -22,66 +22,66 @@
                         <tr class="">
                             <th class="border border-neutral-600 p-2" scope="col">Amount</th>
                             <th class="border border-neutral-600 p-2" scope="col">Date Made</th>
-                            <th class="border border-neutral-600 p-2" scope="col">Actions</th>
                             <th class="border border-neutral-600 p-2" scope="col">Transaction ID</th>
+                            <th class="border border-neutral-600 p-2" scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($deposits as $deposit) 
+                        @foreach($withdrawals as $withdrawal) 
                             <tr class="">
-                                <td class="border p-2 border-neutral-600">${{ $deposit->amount }}</td>
-                                <td class="border p-2 border-neutral-600">{{ $deposit->created_at }}</td>
+                                <td class="border p-2 border-neutral-600">${{ $withdrawal->amount }}</td>
+                                <td class="border p-2 border-neutral-600">{{ $withdrawal->created_at }}</td>
+                                <td class="border p-2 border-neutral-600">{{ $withdrawal->transaction_id }}</td>
                                 <td class="border p-2 border-neutral-600">
-                                    <button class="rounded-md bg-blue-500 p-3 flex gap-1" onclick="openModal()" data-toggle-modal="{{ $deposit->id }}">
+                                    <button class="rounded-md bg-blue-500 p-3 flex gap-1" data-toggle-modal="{{ $withdrawal->id }}">
                                         <span class="material-icons">visibility</span>
                                         View
                                     </button>
                                 </td>
-                                <td class="border p-2 border-neutral-600">{{ $deposit->transaction_id }}</td>
                             </tr>
-                            <dialog class="bg-deep-blue rounded-md p-4 w-9/12 text-white" id="view{{ $deposit->id }}">
+                            <dialog class="bg-deep-blue rounded-md p-4 w-9/12 text-white" id="view{{ $withdrawal->id }}">
                                 <div class="w-full flex justify-between">
                                     <p>Actions</p>
-                                    <span class="material-icons cursor-pointer select-none" onclick="closeModal()">close</span>
-                                </div>
-                                <div class="w-full h-auto my-6">
-                                    <img src="{{ env('APP_URL') }}/{{ $deposit->proof_path }}" alt="img">
+                                    <span class="material-icons cursor-pointer select-none" data-close="modal">close</span>
                                 </div>
                                 <div class="flex justify-between gap-4 my-4">
-    
-                                    <form action="{{ route('approveDeposit') }}" method="post">
+                                    <form action="{{ route('approveWithdrawal') }}" method="post">
                                         @csrf
-                                        <input type="text" name="id" value="{{ $deposit->id }}" hidden>
+                                        <input type="text" name="id" value="{{ $withdrawal->id }}" hidden>
                                         <input type="submit" value="Approve" class="cursor-pointer w-full bg-green-500 p-2 rounded-md">
                                     </form>
     
-                                    <form action="{{ route('declineDeposit') }}" method="post">
+                                    <form action="{{ route('declineWithdrawal') }}" method="post">
                                         @csrf
-                                        <input type="text" name="id" value="{{ $deposit->id }}" hidden>
+                                        <input type="text" name="id" value="{{ $withdrawal->id }}" hidden>
                                         <input type="submit" value="Decline" class="cursor-pointer w-full bg-red-500 p-2 rounded-md">
                                     </form>
-    
                                 </div>
-    
                             </dialog>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            {{ $deposits->links() }}
+            {{ $withdrawals->links() }}
         </div>
     @endif
 </div>
 <script>
-    const openModal = () => {
+    const openBtn = document.querySelector('[data-toggle-modal]')
+    const closeBtn = document.querySelector('[data-close="modal"]')
+    
+    console.log(openBtn);
+    console.log(closeBtn);
+
+    openBtn.addEventListener('click', function() {
         let id = event.target.getAttribute('data-toggle-modal')
         let modal = document.querySelector(`#view${id}`)
         return modal.showModal()
-    }
+    })
 
-    const closeModal = () => {
+    closeBtn.addEventListener('click', function() {
         return event.target.parentNode.parentNode.close()
-    }
+    })
 
 </script>
 @endsection
