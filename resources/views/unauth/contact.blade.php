@@ -1,4 +1,5 @@
 @extends('unauth.layouts.app')
+@section('title', 'Contact Us')
 @section('content')
     <div class="flex flex-col gap-4 my-6 text-center">
         <h2 class="font-medium text-3xl ">Contact Us</h2>

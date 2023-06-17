@@ -1,4 +1,5 @@
 @extends('unauth.layouts.app')
+@section('title', 'Login')
 @section('content')
     <div class="flex flex-col gap-3 mt-6 p-4 mx-auto max-w-2xl">
         <h2 class="text-2xl font-medium">Welcome back</h2>
