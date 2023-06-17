@@ -1,4 +1,5 @@
 @extends('user.layouts.app')
+@section('title', 'Update Account')
 @section('content')
     <div class="flex flex-col w-full gap-6 mb-10">
         <div class="m-6 mb-2">
