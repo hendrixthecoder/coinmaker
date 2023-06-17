@@ -1,5 +1,5 @@
 @extends('user.layouts.app')
-
+@section('title', 'Dashboard')
 @section('content')
     <div class="m-6">
         <h1 class="font-bold text-4xl">Dashboard</h1>
