@@ -1,4 +1,5 @@
 @extends('unauth.layouts.app')
+@section('title', 'About')
 
 @section('content')
     <div class="flex flex-col gap-5 my-6">        

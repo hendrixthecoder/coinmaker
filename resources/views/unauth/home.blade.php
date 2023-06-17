@@ -1,5 +1,5 @@
 @extends('unauth.layouts.app')
-
+@section('title', 'Home')
 @section('content')
     <div class="flex justify-between w-full my-6">
         <div>
