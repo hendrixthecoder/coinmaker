@@ -198,6 +198,65 @@
     <div class="my-32">
         <p class="text-center text-sm text-gray-500 font-black mt-16">REVIEWS</p>
         <h3 class="text-center text-3xl font-medium">Backed by strong global partners</h3>
+
+        <div class="w-full mt-7 md:grid md:grid-cols-3 flex md:gap-5 ">
+            <section class="w-full shadow-md p-7 rounded-md" data-name="testimonial1">
+                <div class="flex flex-col gap-7">
+                    <h3 class="text-gray-500">We have been with {{ env('APP_NAME') }} now for three years. This company has made an effort to get to know us and so the service we receive feels personal.</h3>
+                    <div class="flex gap-5 items-center">
+
+                        <div class="rounded-full w-12 h-12 overflow-hidden" >
+                            <img src="{{ asset('images/test1.jpeg') }}" class="object-fill w-full h-full" alt="">
+                        </div>
+
+                        <div class="flex flex-col gap-1">
+                            <h3 class="font-medium text-lg">Adam L. Powers</h3>
+                            <p class="text-sm text-gray-400">Finance Manager</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="w-full shadow-md p-7 rounded-md md:block " hidden data-name="testimonial2">
+                <div class="flex flex-col gap-7">
+                    <h3 class="text-gray-500">{{ env('APP_NAME') }} approach of identifying our future needs/goals and then working out how to achieve them is a vital approach to reduce the lottery of financial planning.</h3>
+                    <div class="flex gap-5 items-center">
+
+                        <div class="rounded-full w-12 h-12 overflow-hidden" >
+                            <img src="{{ asset('images/test2.jpeg') }}" class="object-fill w-full h-full" alt="">
+                        </div>
+
+                        <div class="flex flex-col gap-1">
+                            <h3 class="font-medium text-lg">Qiong T'an</h3>
+                            <p class="text-sm text-gray-400">Outside Order Clerk</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="w-full shadow-md p-7 rounded-md md:block" hidden data-name="testimonial3">
+                <div class="flex flex-col gap-7">
+                    <h3 class="text-gray-500">With {{ env('APP_NAME') }} I was able to get myself and my family out of debt and begin a new journey of financial freedom.</h3>
+                    <div class="flex gap-5 items-center">
+
+                        <div class="rounded-full w-12 h-12 overflow-hidden" >
+                            <img src="{{ asset('images/test3.jpeg') }}" class="object-fill w-full h-full" alt="">
+                        </div>
+
+                        <div class="flex flex-col gap-1">
+                            <h3 class="font-medium text-lg">Andrew M. Hubbard</h3>
+                            <p class="text-sm text-gray-400">Office Assistant</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="text-center md:hidden mt-10">
+            <button class="rounded-md bg-gray-400 px-4 py-[2px]" data-target="testimonial1" data-toggle="testimonial"></button>
+            <button class="rounded-md bg-gray-400 px-4 py-[2px]" data-target="testimonial2" data-toggle="testimonial"></button>
+            <button class="rounded-md bg-gray-400 px-4 py-[2px]" data-target="testimonial3" data-toggle="testimonial"></button>
+        </div>
     </div>
     {{-- Testimonial slider starts here --}}
 
@@ -205,6 +264,17 @@
     <script>
         $(document).ready(function() {
             $('[data-toggle-pointer="bronze"]').addClass('bg-white rounded-3xl shadow-lg')
+
+            $('[data-target="testimonial1"]').toggleClass('bg-blue-400')
+
+            $('[data-toggle="testimonial"]').click(function () {
+                $('[data-toggle="testimonial"]').removeClass('bg-blue-400')
+                $(this).addClass('bg-blue-400')
+
+                let target = $(this).attr('data-target')
+                $('[data-name]').hide()
+                $(`[data-name="${target}"]`).show()
+            })
 
             $('[data-toggle="pointer"]').click(function() {
                 $('[data-toggle="pointer"]').removeClass('bg-white rounded-3xl shadow-lg')
@@ -214,6 +284,8 @@
                 $('[data-type="pointer"]').hide()
                 $(`[aria-describedby="${target}"]`).show()
             })
+
+
         })
     </script>
 @endsection
