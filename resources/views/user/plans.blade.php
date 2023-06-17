@@ -1,4 +1,5 @@
 @extends('user.layouts.app')
+@section('title', 'Investment Plans')
 @section('content')
     <div class="m-6 flex flex-col gap-4 text-center">
         <h1 class="font-bold text-4xl">Available Plans</h1>
