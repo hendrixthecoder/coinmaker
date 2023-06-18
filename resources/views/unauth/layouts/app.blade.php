@@ -26,12 +26,8 @@
     @include('unauth.layouts.footer')
     <script>
 
-        $('body').addClass('hidden')
         $(window).on('load', function () {
-
-        $('[data-preloader]').fadeOut();
-            $('body').removeClass('hidden')
-
+            $('[data-preloader]').fadeOut();
         })
 
         $(document).ready(function () {
