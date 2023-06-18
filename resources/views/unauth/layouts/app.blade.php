@@ -13,6 +13,10 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body class="font-ubuntu transition-all duration-500">
+    <div class="loader" data-preloader>
+        <div class="justify-content-center jimu-primary-loading"></div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     @include('unauth.layouts.header')
     <div class="p-4 w-full lg:py-10 lg:px-32 relative">
@@ -21,6 +25,15 @@
     </div>
     @include('unauth.layouts.footer')
     <script>
+
+        $('body').addClass('hidden')
+        $(window).on('load', function () {
+
+        $('[data-preloader]').fadeOut();
+            $('body').removeClass('hidden')
+
+        })
+
         $(document).ready(function () {
             $('#nav-toggle-btn').click(() => $('#mobile-nav').toggleClass('hidden'))
             
