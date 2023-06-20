@@ -8,6 +8,7 @@ use App\Http\Controllers\User\FundsController;
 use App\Http\Controllers\User\PageController;
 use App\Http\Controllers\User\UserActionController;
 use App\Http\Middleware\AdminAuthenticator;
+use App\Mail\ContactUsMail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +22,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('mail', function () {
+    $data = [
+        'name' => 'Biobele',
+        'email' => 'biobele@gmail.com',
+        'subject' => 'hi there',
+        'message' => 'Deez nutzzz'
+    ];
+    
+    return new ContactUsMail($data);
+});
+
 Route::get('/', [ FrontController::class, 'home' ])->name('home');
 Route::get('/about-us', [ FrontController::class, 'about'])->name('about');
 Route::get('/contact-us', [ FrontController::class, 'contact'])->name('contact');
+Route::post('/contact-us', [ FrontController::class, 'sendMessage' ])->name('sendmessage');
 
 Route::get('/register', [ AuthController::class, 'registerPage'])->name('register');
 Route::post('/register', [ AuthController::class, 'create'])->name('registerUser');
