@@ -22,16 +22,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('mail', function () {
-    $data = [
-        'name' => 'Biobele',
-        'email' => 'biobele@gmail.com',
-        'subject' => 'hi there',
-        'message' => 'Deez nutzzz'
-    ];
-    
-    return new ContactUsMail($data);
-});
 
 Route::get('/', [ FrontController::class, 'home' ])->name('home');
 Route::get('/about-us', [ FrontController::class, 'about'])->name('about');

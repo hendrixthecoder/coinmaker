@@ -34,7 +34,6 @@ class ContactUsMail extends Mailable
             replyTo: [
                 new Address($this->data['email'], $this->data['name'])
             ],
-            from: new Address($this->data['email']),
         );
     }
 
