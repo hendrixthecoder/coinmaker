@@ -8,19 +8,23 @@ use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
-    public function home () {
+    public function home()
+    {
         return view('unauth.home');
     }
 
-    public function about () {
+    public function about()
+    {
         return view('unauth.about-us');
     }
 
-    public function contact () {
+    public function contact()
+    {
         return view('unauth.contact');
     }
 
-    public function sendMessage (Request $request) {
+    public function sendMessage(Request $request)
+    {
         $validated = $request->validate([
             'name' => 'bail|required|',
             'email' => 'bail|required|email',
@@ -32,7 +36,5 @@ class FrontController extends Controller
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactUsMail($validated));
 
         return back()->with('success', 'Mail sent succesfully!');
-
     }
-
 }

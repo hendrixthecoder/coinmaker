@@ -18,9 +18,8 @@ class FundsController extends Controller
             'amount' => 'bail|required|',
             'plan_id' => 'bail|required'
         ]);
-        
         $amount = $request->amount;
-        $balance = $request->user()->getBalance();
+        $balance = (float) str_replace(',','', $request->user()->getBalance());
         $plan = InvestmentPlan::findOrFail($request->plan_id);
         
         

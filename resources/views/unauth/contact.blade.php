@@ -20,7 +20,7 @@
     @endif
 
     @if (Session::has('success'))
-        <div class="my-10 text-white bg-green-500 p-2">{{ Session::get('success') }}</div>
+        <div class="my-10 text-white rounded-md bg-green-500 p-2">{{ Session::get('success') }}</div>
     @endif
 
     <form action="{{ route('sendmessage') }}" method="post" class="my-4 flex flex-col gap-10" >

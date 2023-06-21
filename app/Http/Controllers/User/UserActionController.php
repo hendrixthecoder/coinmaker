@@ -101,7 +101,7 @@ class UserActionController extends Controller
 
     public function editWithdrawalInfo (Request $request) {
         $request->user()->update($request->all());
-
+        
         return back()->with('success', 'Profile updated successfully!');
         
     }
