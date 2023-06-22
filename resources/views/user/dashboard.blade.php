@@ -50,5 +50,25 @@
                 </div>
             </div>
         </div>
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+        
+        </div>
+
     </div>
+    
+
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+        "symbol": "COINBASE:BTCUSD",
+        "width": "100%",
+        "height": "100%",
+        "locale": "en",
+        "dateRange": "12M",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "autosize": true,
+        "largeChartUrl": ""
+    }
+</script>
 @endsection

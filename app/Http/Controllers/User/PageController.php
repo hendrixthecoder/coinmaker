@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\UserPlan;
 use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
 use App\Models\InvestmentPlan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -30,7 +31,14 @@ class PageController extends Controller
 
     public function makePayment () {
         if (!Session::get('amount')) return redirect()->route('deposits')->with('error', 'Put in amount to continue');
-        return view('user.make-payment');
+        $btc = PaymentMethod::find(1);
+        $eth = PaymentMethod::find(2);
+        $usdt = PaymentMethod::find(3);
+        $bnb = PaymentMethod::find(4);
+        $trx = PaymentMethod::find(5);
+        $matic = PaymentMethod::find(6);
+        $solana = PaymentMethod::find(7);
+        return view('user.make-payment', compact(['btc', 'eth', 'usdt', 'bnb','trx','matic','solana']));
     }
 
     public function plans () {

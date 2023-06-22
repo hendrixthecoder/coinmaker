@@ -26,6 +26,10 @@
             <span class="material-icons">savings</span>
             <a href="{{ route('admin.plans') }}">Investment Plans</a>
         </div>
+        <div class="flex gap-3 hover:text-gray-300 hover:translate-x-4 duration-500 @if (Route::is('editPaymentMethods')) text-blue-500 @endif">
+            <span class="material-icons">settings</span>
+            <a href="{{ route('editPaymentMethods') }}">Manage Payment Methods</a>
+        </div>
         <div class="flex justify-between duration-300 hover:text-gray-500 cursor-pointer select-none" data-toggle="submenu">
             <div class="flex gap-3">
                 <span class="material-icons">account_circle</span>

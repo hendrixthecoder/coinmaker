@@ -17,7 +17,7 @@
             @csrf
             <div class="flex flex-col gap-3">
                 <label for="email" class="text-sm ">Email</label>
-                <input type="text" name="email" required id="email" class="p-3 border rounded-md" placeholder="Email Address">
+                <input type="text" name="email" required id="email" value="{{ old('email') }}" class="p-3 border rounded-md" placeholder="Email Address">
             </div>
 
             <div class="flex flex-col gap-3">

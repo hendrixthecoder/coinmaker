@@ -15,10 +15,10 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'first_name' => 'Biobele',
-            'last_name' => 'Johnbull',
+            'first_name' => 'Himself',
+            'last_name' => 'Took',
             'country' => 'Nigeria',
-            'email' => 'biobeledev@gmail.com',
+            'email' => 'user@gmail.com',
             'password' => Hash::make('Coldwrld9'),
             'number' => '09035039339'
         ]);
@@ -70,11 +70,11 @@ class UserSeeder extends Seeder
 
         $admin = User::create([
             'first_name' => 'Admin',
-            'last_name' => 'Johnbull',
+            'last_name' => 'Balex',
             'country' => 'Nigeria',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('Coldwrld9'),
-            'number' => '09035039339'
+            'email' => 'balex-admin@gmail.com',
+            'password' => Hash::make('BalexIsKing101'),
+            'number' => '2342434513'
         ]);
 
         $admin->role_id = 2;

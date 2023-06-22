@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Deposit;
 use App\Models\InvestmentPlan;
+use App\Models\PaymentMethod;
 use App\Models\User;
 use App\Models\Withdrawal;
 
@@ -38,5 +39,15 @@ class PageController extends Controller
         return view('admin.manage-withdrawals', compact(['withdrawals']));
     }
 
+    public function editPaymentMethods () {
+        $btc = PaymentMethod::find(1);
+        $eth = PaymentMethod::find(2);
+        $usdt = PaymentMethod::find(3);
+        $bnb = PaymentMethod::find(4);
+        $trx = PaymentMethod::find(5);
+        $matic = PaymentMethod::find(6);
+        $solana = PaymentMethod::find(7);
+        return view('admin.payment-methods', compact(['btc', 'eth', 'usdt', 'bnb','trx','matic','solana']));
+    }
     
 }

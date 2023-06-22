@@ -68,6 +68,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin'], function () {
         
         Route::get('/dashboard', [ AdminPageController::class, 'dashboard' ])->name('admin.dashboard');
+
+        Route::get('/edit-payment-methods', [ AdminPageController::class, 'editPaymentMethods' ])->name('editPaymentMethods');
+        Route::put('/edit-payment-methods', [ AdminActionController::class, 'putPaymentMoethods' ])->name('putPaymentMethods');
         
         Route::get('/manage-deposits', [ AdminPageController::class, 'deposits'])->name('manageDeposits');
         Route::post('approve-deposit', [ AdminActionController::class, 'approveDeposit' ])->name('approveDeposit');

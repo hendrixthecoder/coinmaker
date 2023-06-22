@@ -7,6 +7,7 @@ use App\Models\Deposit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\InvestmentPlan;
+use App\Models\PaymentMethod;
 use App\Models\Transaction;
 use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Storage;
@@ -122,6 +123,18 @@ class AdminActionController extends Controller
         
         return back()->with('success', 'Withdrawal declined successfully!');
 
+    }
+
+    public function putPaymentMoethods (Request $request) {
+        if($request->btc) PaymentMethod::find(1)->update(['address' => $request->btc]);
+        if($request->eth) PaymentMethod::find(2)->update(['address' => $request->eth]);
+        if($request->usdt) PaymentMethod::find(3)->update(['address' => $request->usdt]);
+        if($request->bnb) PaymentMethod::find(4)->update(['address' => $request->bnb]);
+        if($request->trx) PaymentMethod::find(5)->update(['address' => $request->trx]);
+        if($request->matic) PaymentMethod::find(6)->update(['address' => $request->matic]);
+        if($request->solana) PaymentMethod::find(7)->update(['address' => $request->solana]);
+
+        return back()->with('success', 'Action successful!');
     }
     
 }
