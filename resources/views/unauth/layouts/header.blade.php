@@ -1,6 +1,8 @@
-<div class="select-none p-4 py-2 lg:py-10 lg:px-32 z-50 bg-white sticky top-0" data-nav="true">
-    <nav class="flex justify-between w-full my-4">
-        <p>Logo here</p>
+<div class="select-none p-4 py-1 lg:py-10 lg:px-32 z-50 bg-white sticky top-0" data-nav="true">
+    <nav class="flex py-2 justify-between items-center w-full">
+        <div class="w-20 h-20">
+            <img src="{{ asset('images/logo.png') }}" class="object-contain w-full h-full" alt="CriptaliaElite Logo">
+        </div>
         <div class="flex justify-between gap-5 max-sm:hidden">
             <a href="{{ route('home') }}" class="@if (Route::is('home')) text-blue-500 @endif hover:text-gray-500">Home</a>
             <a href="{{ route('about') }}" class="@if (Route::is('about')) text-blue-500 @endif hover:text-gray-500 transition-all duration-200">About Us</a>

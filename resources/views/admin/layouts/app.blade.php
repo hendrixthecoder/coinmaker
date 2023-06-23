@@ -48,6 +48,7 @@
 
             $('[data-toggle="submenu"]').click(function() {
                 $('#sub').toggleClass('rotate-90')
+                $('#submenu').toggleClass('pointer-events-none')
                 $('#submenu').toggleClass('opacity-0')
             })     
         })

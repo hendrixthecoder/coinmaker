@@ -42,7 +42,7 @@
             <span class="material-icons cursor-pointer select-none transition-all"  id="sub">chevron_right</span>
         </div>
         <div class="px-4">
-            <div class="rounded-md p-4 bg-light-blue flex flex-col gap-3 text-sm duration-300 opacity-0" id="submenu">
+            <div class="rounded-md p-4 bg-light-blue flex flex-col gap-3 text-sm duration-300 opacity-0 pointer-events-none" id="submenu">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <input type="submit" class="cursor-pointer hover:translate-x-4 duration-500" value="Log Out ({{ Auth::user()->first_name }})">

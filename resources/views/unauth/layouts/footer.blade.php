@@ -1,7 +1,9 @@
 <footer class="mt-24 p-4 lg:py-10 lg:px-32 bg-gray-100">
     <div class="lg:flex mb-16">
         <div class="w-full text-sm">
-            <p class="mt-20 text-4xl">Logo here</p>
+            <div class="h-20 w-20 ">
+                <img src="{{ asset('images/logo.png') }}" class="object-fill w-full h-full" alt="">
+            </div>
 
             <div class="flex flex-col gap-4 text-gray-500">
                 <div class="mt-10 flex gap-4 hover:text-blue-500">
