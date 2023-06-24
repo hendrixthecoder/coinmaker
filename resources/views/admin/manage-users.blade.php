@@ -20,6 +20,7 @@
                             <th class="border border-neutral-600 p-2" scope="col">Email</th>
                             <th class="border border-neutral-600 p-2" scope="col">Country</th>
                             <th class="border border-neutral-600 p-2" scope="col">Phone Number</th>
+                            <th class="border border-neutral-600 p-2" scope="col">Balance</th>
                             <th class="border border-neutral-600 p-2" scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -30,6 +31,7 @@
                                 <td class="border p-2 border-neutral-600">{{ $user->email }}</td>
                                 <td class="border p-2 border-neutral-600">{{ $user->country }}</td>
                                 <td class="border p-2 border-neutral-600">{{ $user->number }}</td>
+                                <td class="border p-2 border-neutral-600">${{ $user->getBalance() }}</td>
                                 <td class="border p-2 border-neutral-600">
                                     <button class="rounded-md bg-blue-500 p-3 flex gap-1" onclick="openModal(event)" data-toggle-modal="{{ $user->id }}">
                                         <span class="material-icons">visibility</span>
